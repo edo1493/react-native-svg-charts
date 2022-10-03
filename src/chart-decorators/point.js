@@ -4,10 +4,18 @@ import { Circle } from 'react-native-svg'
 
 const Point = ({ x, y, value, index, radius, color }) => {
     if (isNaN(value)) {
-        return <Circle />
+        return <Circle/>
     }
 
-    return <Circle cx={x(index)} cy={y(value)} r={radius} stroke={color} fill={'white'} />
+    return (
+        <Circle
+            cx={ x(index) }
+            cy={ y(value) }
+            r={ radius }
+            stroke={ color }
+            fill={ 'white' }
+        />
+    )
 }
 
 Point.propTypes = {

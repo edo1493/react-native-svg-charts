@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 
 const util = {
+
     sortDescending(_array) {
-        const array = [..._array]
+        const array = [ ..._array ]
         return array.sort((a, b) => {
             if (a > b) {
                 return -1
@@ -13,6 +14,7 @@ const util = {
             return 0
         })
     },
+
 }
 
 export const Constants = {
