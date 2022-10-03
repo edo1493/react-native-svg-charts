@@ -100,42 +100,29 @@ class YAxis extends PureComponent {
                 >
                     {/*invisible text to allow for parent resizing*/}
                     <Text
-                        style={{ color: 'transparent', fontSize: svg.fontSize }}
+                        style={{
+                            color: 'transparent',
+                            opacity: 0,
+                            fontSize: svg.fontSize,
+                            fontFamily: svg.fontFamily,
+                            fontWeight: svg.fontWeight,
+                        }}
                     >
                         {longestValue}
                     </Text>
-                    {
-                        height > 0 && width > 0 &&
-                        <Svg style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            height,
-                            width,
-                        }}>
+                    {height > 0 && width > 0 && (
+                        <Svg
+                            style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                height,
+                                width,
+                            }}
+                        >
                             {children}
-                            {
-                                // don't render labels if width isn't measured yet,
-                                // causes rendering issues
-                                height > 0 &&
-                                ticks.map((value, index) => {
-                                    return (
-                                        <SVGText
-                                            originY={ y(value) }
-                                            textAnchor={ 'middle' }
-                                            x={ '50%' }
-                                            alignmentBaseline={ 'middle' }
-                                            { ...svg }
-                                            key={ index }
-                                            y={ y(value) }
-                                        >
-                                            {formatLabel(value, index)}
-                                        </SVGText>
-                                    )
-                                })
-                            }
                         </Svg>
-                    }
+                    )}
                 </View>
             </View>
         )

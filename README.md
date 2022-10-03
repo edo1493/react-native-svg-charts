@@ -7,12 +7,17 @@
 
 Welcome to react-native-svg-charts!
 
+`react-native-svg-charts` provides SVG Charts support to React Native on iOS and Android, and a compatibility layer for the web.
+
+### Looking for maintainers! I alone don't have the time to maintain this library anymore. Preferably looking for somebody who uses this library in their proffesional work (how I originally got the time to maintain).
+
 ### version 5 is now available!
 A much improved decorator system has been introduced, allowing for greater flexibility and less complexity.
 See [releases](https://github.com/JesperLekland/react-native-svg-charts/releases) for more information.
 
 ---
-In order to not bloat this README to much we've moved some examples over to
+
+In order to not bloat this README too much we've moved some examples over to
 [`react-native-svg-charts-examples`](https://github.com/JesperLekland/react-native-svg-charts-examples).
 There we will try to showcase the really cool things you can do with this library.
 This README will try to keep things as simple as possible so that everybody can get up and running as fast as possible.
@@ -24,6 +29,24 @@ This library uses [react-native-svg](https://github.com/react-native-community/r
 to render its graphs. Therefore this library needs to be installed **AND** linked into your project to work.
 
 Other than the above dependency this library uses pure javascript and supports both iOS and Android
+
+## Getting Started
+
+> Make sure to follow the installation mentioned in the [Prerequisites](#Prerequisites)
+
+Then you can install the library using either yarn:
+
+```
+yarn add react-native-svg-charts
+```
+
+or npm:
+
+```
+npm install --save react-native-svg-charts
+```
+
+Now you're good to go!
 
 ## Motivation
 
@@ -67,26 +90,26 @@ yarn storybook
 
 ## Common Props
 
-| Property | Default | Description |
-| --- | --- | --- |
-| data | **required** | An array of arbitrary data - use prop `xAccessor`/`yAccessor`to tell the chart about the data structure|
-| yAccessor | ({ item }) => item | A function that takes each entry of `data` (named "item") as well as the index and returns the y-value of that entry |
-| xAccessor | ({ index }) => index | Same as `yAccessor` but returns the x-value of that entry|
-| yScale | d3Scale.scaleLinear | A function that determines the scale of said axis (only tested with scaleLinear, scaleTime & scaleBand )|
-| xScale | d3Scale.scaleLinear | Same as `yScale` but for the x axis |
-| svg | `{}` | an object containing  all the props that should be passed down to the underlying `react-native-svg` component. [See available props](https://github.com/react-native-community/react-native-svg#common-props)|
-| animate | false | PropTypes.bool |
-| animationDuration | 300 | PropTypes.number |
-| style | undefined | Supports all [ViewStyleProps](https://facebook.github.io/react-native/docs/viewstyleproptypes.html) |
-| curve | d3.curveLinear | A function like [this](https://github.com/d3/d3-shape#curves) |
-| contentInset | { top: 0, left: 0, right: 0, bottom: 0 } | An object that specifies how much fake "margin" to use inside of the SVG canvas. This is particularly helpful on Android where `overflow: "visible"` isn't supported and might cause clipping. Note: important to have same contentInset on axis's and chart |
-| numberOfTicks | 10 | We use [d3-array](https://github.com/d3/d3-array#ticks) to evenly distribute the grid and dataPoints on the yAxis. This prop specifies how many "ticks" we should try to render. Note: important that this prop is the same on both the chart and on the yAxis |
-| showGrid | true | Whether or not to show the grid lines |
-| yMin | undefined | Alter how the chart bounds are calculated |
-| yMax | undefined | Alter how the chart bounds are calculated |
-| xMin | undefined | Alter how the chart bounds are calculated |
-| xMax | undefined | Alter how the chart bounds are calculated |
-| children | undefined | One or many `react-native-svg` components that will be used to enhance your chart |
+| Property          | Default                                  | Description                                                                                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data              | **required**                             | An array of arbitrary data - use prop `xAccessor`/`yAccessor`to tell the chart about the data structure                                                                                                                                                        |
+| yAccessor         | ({ item }) => item                       | A function that takes each entry of `data` (named "item") as well as the index and returns the y-value of that entry                                                                                                                                           |
+| xAccessor         | ({ index }) => index                     | Same as `yAccessor` but returns the x-value of that entry                                                                                                                                                                                                      |
+| yScale            | d3Scale.scaleLinear                      | A function that determines the scale of said axis (only tested with scaleLinear, scaleTime & scaleBand )                                                                                                                                                       |
+| xScale            | d3Scale.scaleLinear                      | Same as `yScale` but for the x axis                                                                                                                                                                                                                            |
+| svg               | `{}`                                     | an object containing all the props that should be passed down to the underlying `react-native-svg` component. [See available props](https://github.com/react-native-community/react-native-svg#common-props)                                                   |
+| animate           | false                                    | PropTypes.bool                                                                                                                                                                                                                                                 |
+| animationDuration | 300                                      | PropTypes.number                                                                                                                                                                                                                                               |
+| style             | undefined                                | Supports all [ViewStyleProps](https://facebook.github.io/react-native/docs/view-style-props)                                                                                                                                                            |
+| curve             | d3.curveLinear                           | A function like [this](https://github.com/d3/d3-shape#curves)                                                                                                                                                                                                  |
+| contentInset      | { top: 0, left: 0, right: 0, bottom: 0 } | An object that specifies how much fake "margin" to use inside of the SVG canvas. This is particularly helpful on Android where `overflow: "visible"` isn't supported and might cause clipping. Note: important to have same contentInset on axis's and chart   |
+| numberOfTicks     | 10                                       | We use [d3-array](https://github.com/d3/d3-array#ticks) to evenly distribute the grid and dataPoints on the yAxis. This prop specifies how many "ticks" we should try to render. Note: important that this prop is the same on both the chart and on the yAxis |
+| showGrid          | true                                     | Whether or not to show the grid lines                                                                                                                                                                                                                          |
+| yMin              | undefined                                | Alter how the chart bounds are calculated                                                                                                                                                                                                                      |
+| yMax              | undefined                                | Alter how the chart bounds are calculated                                                                                                                                                                                                                      |
+| xMin              | undefined                                | Alter how the chart bounds are calculated                                                                                                                                                                                                                      |
+| xMax              | undefined                                | Alter how the chart bounds are calculated                                                                                                                                                                                                                      |
+| children          | undefined                                | One or many `react-native-svg` components that will be used to enhance your chart                                                                                                                                                                              |
 
 ## Common arguments to children
 
